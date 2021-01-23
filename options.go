@@ -690,6 +690,20 @@ func (opts *Options) SetDeleteObsoleteFilesPeriodMicros(value uint64) {
 	C.rocksdb_options_set_delete_obsolete_files_period_micros(opts.c, C.uint64_t(value))
 }
 
+// SetMaxBackgroundJobs sets the maximum number of
+// concurrent background jobs (flush jobs and compaction jobs)
+// Default: 2
+func (opts *Options) SetMaxBackgroundJobs(value int) {
+	C.rocksdb_options_set_max_background_jobs(opts.c, C.int(value))
+}
+
+// SetMaxSubCompactions sets the maximum number of
+// background jobs for a compaction
+// Default: 1
+func (opts *Options) SetMaxSubCompactions(value int) {
+	C.rocksdb_options_set_max_subcompactions(opts.c, C.int(value))
+}
+
 // SetMaxBackgroundCompactions sets the maximum number of
 // concurrent background jobs, submitted to
 // the default LOW priority thread pool
