@@ -700,8 +700,8 @@ func (opts *Options) SetMaxBackgroundJobs(value int) {
 // SetMaxSubCompactions sets the maximum number of
 // background jobs for a compaction
 // Default: 1
-func (opts *Options) SetMaxSubCompactions(value int) {
-	C.rocksdb_options_set_max_subcompactions(opts.c, C.int(value))
+func (opts *Options) SetMaxSubCompactions(value uint32) {
+	C.rocksdb_options_set_max_subcompactions(opts.c, C.uint32_t(value))
 }
 
 // SetMaxBackgroundCompactions sets the maximum number of
