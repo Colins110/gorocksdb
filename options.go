@@ -717,7 +717,7 @@ func (opts *Options) SetMaxBackgroundCompactions(value int) {
 // the default LOW priority thread pool
 // Default: 1
 func (opts *Options) GetMaxBackgroundCompactions() int {
-	return C.rocksdb_options_get_max_background_compactions(opts.c)
+	return int(C.rocksdb_options_get_max_background_compactions(opts.c))
 }
 
 // SetMaxBackgroundFlushes sets the maximum number of
