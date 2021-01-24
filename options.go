@@ -697,11 +697,25 @@ func (opts *Options) SetMaxBackgroundJobs(value int) {
 	C.rocksdb_options_set_max_background_jobs(opts.c, C.int(value))
 }
 
+// GetMaxBackgroundJobs gets the maximum number of
+// concurrent background jobs (flush jobs and compaction jobs)
+// Default: 2
+func (opts *Options) GetMaxBackgroundJobs() int {
+	return int(C.rocksdb_options_get_max_background_jobs(opts.c))
+}
+
 // SetMaxSubCompactions sets the maximum number of
 // background jobs for a compaction
 // Default: 1
 func (opts *Options) SetMaxSubCompactions(value uint32) {
 	C.rocksdb_options_set_max_subcompactions(opts.c, C.uint32_t(value))
+}
+
+// GetMaxSubCompactions gets the maximum number of
+// background jobs for a compaction
+// Default: 1
+func (opts *Options) GetMaxSubCompactions() uint32 {
+	return uint32(C.rocksdb_options_get_max_subcompactions(opts.c))
 }
 
 // SetMaxBackgroundCompactions sets the maximum number of
@@ -734,6 +748,13 @@ func (opts *Options) GetMaxBackgroundCompactions() int {
 // Default: 0
 func (opts *Options) SetMaxBackgroundFlushes(value int) {
 	C.rocksdb_options_set_max_background_flushes(opts.c, C.int(value))
+}
+
+// GetMaxBackgroundFlushes gets the maximum number of
+// concurrent background memtable flush jobs, submitted to
+// the HIGH priority thread pool.
+func (opts *Options) GetMaxBackgroundFlushes() int {
+	return int(C.rocksdb_options_get_max_background_flushes(opts.c))
 }
 
 // SetMaxLogFileSize sets the maximal size of the info log file.
