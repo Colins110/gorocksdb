@@ -712,6 +712,14 @@ func (opts *Options) SetMaxBackgroundCompactions(value int) {
 	C.rocksdb_options_set_max_background_compactions(opts.c, C.int(value))
 }
 
+// GetMaxBackgroundCompactions Gets the maximum number of
+// concurrent background jobs, submitted to
+// the default LOW priority thread pool
+// Default: 1
+func (opts *Options) GetMaxBackgroundCompactions() int {
+	C.rocksdb_options_get_max_background_compactions(opts.c)
+}
+
 // SetMaxBackgroundFlushes sets the maximum number of
 // concurrent background memtable flush jobs, submitted to
 // the HIGH priority thread pool.
